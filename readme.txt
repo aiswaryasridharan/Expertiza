@@ -3,12 +3,22 @@ E617. Refactoring and Testing (misc classes)	-- asridha2, varjun2, usridha
 Github link    	   - https://github.com/aiswaryasridharan/Expertiza
 VCL link 	   - http://152.46.19.20:3000/
 
-CLASSES:
+Refactored CLASSES (existing):
 models/super_administrator.rb (58 lines)
 models/ta.rb (81 lines)
 models/team_node.rb (23 lines)
 models/team_user_node.rb (23 lines)
 models/teams_user.rb (27 lines)
+
+New test classes (included for this project) :
+
+test/unit/
+
+	super_administrator_test.rb
+	ta_test.rb
+	team_node_test.rb
+	team_user_node_test.rb
+	teams_user_test.rb
 
 What it does: Manages teams, TA or super-admin functionality in Expertiza
 
