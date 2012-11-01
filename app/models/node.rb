@@ -13,7 +13,9 @@ class Node < ActiveRecord::Base
   def self.get(sortvar = nil,sortorder =nil,user_id = nil,show = nil, parent_id = nil)       
   end
 
-  #Retrieves node of a type for team and user nodes
+  #Retrieves a node of type team or user
+  #The function is pulled up from team_node.rb and team_user_node.rb to comply with DRY principle
+  #SQL injection issue is resolved
   def self.get_team_or_user_node(parent_id, id_name, tablename, classname)
     query = "select nodes.* from nodes, #{tablename} where nodes.node_object_id = #{tablename}.id"
     query = query+" and nodes.type = ?"

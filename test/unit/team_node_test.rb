@@ -4,12 +4,14 @@ class TeamNodeTest < ActiveSupport::TestCase
   fixtures :nodes, :teams,:teams_users, :courses
 
   def test_get_name
+    #tests if the team name is obtained as expected
     team_given = nodes(:node12)
     team_expected = teams(:team0)
     assert_equal team_expected.name, team_given.get_name
   end
 
   def test_get_children
+    #tests if the teamnode has any children
     team_given = nodes(:node12)
     assert_blank team_given.get_children
   end
@@ -32,8 +34,9 @@ class TeamNodeTest < ActiveSupport::TestCase
     end
   end
 
-  def test_sql_injection
+  def test_sql_injection_on_get
     team_given = nodes(:node12)
+    #attempted sql injection should result in empty resultset
     result = team_given.class.get("' OR 1 --")
     assert_blank result
   end

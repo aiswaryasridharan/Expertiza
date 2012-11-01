@@ -2,13 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class TeamUserNodeTest < ActiveSupport::TestCase
   fixtures :nodes, :users, :teams, :courses
-=begin
-  def test_get_name
-    team_given = nodes(:node20)
-    team_expected = users(:student5)
-    assert_equal team_expected.name, team_given.get_name
-  end
-=end
 
   def test_get_with_parent_id
     team_given = nodes(:node18)
@@ -19,6 +12,7 @@ class TeamUserNodeTest < ActiveSupport::TestCase
   end
 
   def test_get_without_parent_id
+    #empty result set if parent id is nil
     team_given = nodes(:node18)
     result = team_given.class.get(nil)
     assert_equal 0, result.count
@@ -27,6 +21,7 @@ class TeamUserNodeTest < ActiveSupport::TestCase
   def test_sql_injection
     team_given = nodes(:node18)
     result = team_given.class.get("' OR 1 --")
+    #attempted sql injection should result in empty result set
     assert_blank result
   end
 end

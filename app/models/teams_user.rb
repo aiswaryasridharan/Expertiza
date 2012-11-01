@@ -1,7 +1,10 @@
-class TeamsUser < ActiveRecord::Base  
+class TeamsUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
-  
+
+  #Applied refactorings
+  # removed methods : get_team_members(empty), hello(unused)
+
   def name
     self.user.name
   end

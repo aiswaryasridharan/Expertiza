@@ -1,4 +1,8 @@
 class TeamUserNode < Node
+
+  #Applied refactorings
+  # Extract method for common query in get() and then Pull Up to parent Node
+
   def self.table
     "teams_users"
   end  

@@ -1,5 +1,13 @@
 
 class SuperAdministrator < User
+
+  # Applied refactorings
+  # removed unused constants : QUESTIONNAIRE, SIGNUPSHEET, ASSIGNMENT
+  # removed unused methods : list_all, list_all_private, get (duplicate method)
+  # Commented methods: list_admins, list_instructors
+  # Extract method : list_admins and list_instructors had the same code, which has been extracted out
+  #                  and put in another function, viz, list_admins_or_instructors
+
   def get(object_type, id, user_id)
       object_type.find(:first, :conditions => ["id = ?", id])
   end
@@ -9,7 +17,6 @@ class SuperAdministrator < User
   #commented out and not deleted. In future, if somebody wants to write better mvc code, they can use these methods.
   #However, SQL injection issue has been resolved.
 =begin
-
   def list_admins_or_instructors(object_type, user_id)
     if (object_type != SignupSheet)
       object_type.find(:all,

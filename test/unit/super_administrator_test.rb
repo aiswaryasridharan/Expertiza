@@ -12,6 +12,9 @@ class SuperAdministratorTest < ActiveSupport::TestCase
   end
 
   def test_get
-    assert_equal users(:instructor1), @superadmin.get(User,users(:instructor1).id,nil)
+    #tests if superadmin is able to fetch the right id of the object
+    user_expected = users(:instructor1)
+    user_obtained = @superadmin.get(User,users(:instructor1).id,nil)
+    assert_equal user_expected, user_obtained
   end
 end

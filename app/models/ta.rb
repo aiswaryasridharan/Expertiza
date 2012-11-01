@@ -2,6 +2,10 @@
 class Ta < User
   has_many :ta_mappings
 
+  #Applied refactorings :
+  #unused constants QUESTIONNAIRE, ASSIGNMENT were removed
+  #unused methods list_all, list_mine were removed
+
   def get(object_type, id, user_id)
     object_type.find(:first, 
                      :conditions => ["id = ? AND (instructor_id = ? OR private = 0)", 
